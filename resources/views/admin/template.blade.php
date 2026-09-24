@@ -50,9 +50,11 @@
 					<li class="nav-item">
 						<a href="/administrator" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
+					@if(auth()->user()->role == 'admin')
                     <li class="nav-item">
 						<a href="/administrator/pengelola" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Data Pengelola</span></a>
 					</li>
+					@endif
 					<li class="nav-item">
 						<a href="/administrator/siswa" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Data Siswa</span></a>
 					</li>
