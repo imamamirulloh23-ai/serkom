@@ -68,8 +68,7 @@
 						<a href="/administrator/berita" class="nav-link"><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Berita</span></a>
 					</li>
 
-					<li class="nav-item"><a href="/administrator/pengelola" class="nav-link"><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Data Pengelola</span></a></li>
-                    <li class="nav-item">
+					<li class="nav-item">
 						<a href="/administrator/profil-sekolah" class="nav-link"><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Profil Sekolah</span></a>
 					</li>
 				</ul>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class CheckAuth
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class CheckAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
-            return redirect()->route('login');
+        if(Auth::user()->role == "admin"){
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect()->back();
     }
 }
