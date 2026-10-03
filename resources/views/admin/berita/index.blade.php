@@ -36,7 +36,7 @@
                                                     <h5>Data Galeri</h5>
                                                 </div>
                                                 <div class="col-md-6 d-flex justify-content-end">
-                                                    <a href="#" class="btn btn-sm btn-primary">Add Berita</a>
+                                                    <a href="{{ route('admin.berita.create') }}" class="btn btn-sm btn-primary">Add Berita</a>
                                                 </div>
                                             </div>
                                             {{-- <span class="d-block m-t-5"></span> --}}
@@ -48,33 +48,23 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Judul</th>
+                                                            <th>Slug</th>
                                                             <th>Isi Berita</th>
                                                             <th>Tanggal</th>
                                                             <th>Gambar</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($berita as $item)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
+                                                            <th scope="row">{{ $loop->iteration }}</th>
+                                                            <td>{{ $item->judul }}</td>
+                                                            <td>{{ $item->slug }}</td>
+                                                            <td>{{ $item->isi }}</td>
+                                                            <td>{{ $item->tanggal }}</td>
+                                                            <td><img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" width="100"></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Otto</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>Otto</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -9,14 +9,14 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengelolaController;
 use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('auth', [AuthController::class, 'auth'])->name('auth');
+Route::get('/berita/{slug}', [HomeController::class, 'showBerita'])->name('berita.show');
 
 Route::middleware('checkauth')->group(function(){
 
@@ -24,7 +24,9 @@ Route::middleware('checkauth')->group(function(){
     Route::get('/administrator/siswa', [SiswaController::class, 'index']);
     Route::get('/administrator/guru', [GuruController::class, 'index']);
     Route::get('/administrator/galeri', [GaleriController::class, 'index']);
-    Route::get('/administrator/berita', [BeritaController::class, 'index']);
+    Route::get('/administrator/berita', [BeritaController::class, 'index'])->name('admin.berita.index');
+    Route::get('/administrator/berita/create', [BeritaController::class, 'create'])->name('admin.berita.create');
+    Route::post('/administrator/berita/store', [BeritaController::class, 'store'])->name('admin.berita.store');
 
     Route::middleware('admin')->group(function(){
         Route::get('/administrator/pengelola', [PengelolaController::class, 'index'])->name('pengelola.index');
@@ -33,6 +35,7 @@ Route::middleware('checkauth')->group(function(){
         Route::get('/administrator/pengelola/delete/{id}', [PengelolaController::class, 'delete'])->name('pengelola.delete');
         Route::get('/administrator/pengelola/edit/{id}', [PengelolaController::class, 'edit'])->name('pengelola.edit');
         Route::post('/administrator/pengelola/update/{id}', [PengelolaController::class, 'update'])->name('pengelola.update');
+
     });
 
     Route::get('/administrator/profil-sekolah', [ProfilSekolahController::class, 'index']);

@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'password' => bcrypt('password'),
             'role' => 'admin'
-
         ]);
+
+        // $this->call(BeritaSeeder::class);
     }
 }
+

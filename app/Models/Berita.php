@@ -12,7 +12,7 @@ class Berita extends Model
     protected $table = "berita";
     protected $primaryKey = 'id_berita';
     protected $keyType = 'string';
+    public $timestamps = false;
 
     protected $guarded = [];
-
 }
